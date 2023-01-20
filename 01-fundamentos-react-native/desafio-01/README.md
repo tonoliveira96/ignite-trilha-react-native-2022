@@ -10,4 +10,4 @@ Conceitos básico React Native, componentização, rotas e estilização.
 
 ## Interface
 
-[](https://raw.githubusercontent.com/tonoliveira96/ignite-trilha-react-native-2022/main/assets/rn-desafio-01.gif)
+![](https://raw.githubusercontent.com/tonoliveira96/ignite-trilha-react-native-2022/main/assets/rn-2022-desafio-01.gif)

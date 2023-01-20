@@ -5,9 +5,23 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#0D0D0D',
     alignItems: 'center',
-    padding: 24
+  },
+  logo: {
+    justifyContent: 'center',
+    padding: 32,
+    height: 173,
+  },
+  containerList: {
+    flex:1,
+    width: '100%',
+    position: 'relative',
+    padding: 24,
+    backgroundColor: '#1A1A1A'
   },
   containerInput:{
+    position: 'absolute',
+    alignSelf: 'center',
+    top: -24,
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '100%',
@@ -34,15 +48,19 @@ export const styles = StyleSheet.create({
   headerList:{
     width: '100%',
     paddingTop: 16,
+    paddingBottom: 16,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    borderStyle: 'solid',
+    borderBottomWidth: 1,
+    borderBottomColor: '#333333'
   },
   headerListTitle: {
     fontSize: 16,
     fontWeight: 'bold',
   },
 
-  conatinerList: {
+  flatList: {
     width: '100%',
   }
 })

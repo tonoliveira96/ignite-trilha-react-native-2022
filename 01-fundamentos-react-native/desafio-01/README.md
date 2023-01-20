@@ -9,3 +9,5 @@ Aplicativo de lista de tarefas, onde é possivel o usuário cadastrar uma nova t
 Conceitos básico React Native, componentização, rotas e estilização.
 
 ## Interface
+
+[](https://raw.githubusercontent.com/tonoliveira96/ignite-trilha-react-native-2022/main/assets/rn-desafio-01.gif)

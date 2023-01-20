@@ -55,6 +55,10 @@ export const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#333333'
   },
+  containerheaderListTitle:{
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   headerListTitle: {
     fontSize: 16,
     fontWeight: 'bold',

@@ -7,11 +7,12 @@ import {
   View,
   Image
 } from 'react-native';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { NoTasks } from '../../components/NoTasks';
 import { Task } from '../../components/Task';
 import Icon from "@expo/vector-icons/Feather";
 import { styles } from './styles';
+import { Counter } from '../../components/Counter';
 const logo = require('../../images/logo.png');
 
 interface TaskProps {
@@ -25,10 +26,11 @@ export function Home() {
   const [newTask, setNewTask] = useState('');
 
   function handleDelete(id: number) {
+
     Alert.alert('Remover', 'Remover tarefa?', [
       {
         text: 'Sim',
-        onPress: () => Alert.alert("Deletado!")
+        onPress: () => setTasks(prevState => prevState.splice(id, 1))
       },
       {
         text: 'Não',
@@ -41,13 +43,22 @@ export function Home() {
     if (newTask.length < 3) {
       return Alert.alert("Atenção", "Descrição da terafa deve ter no mínino 3 caracteres.");
     }
-    setTasks((prevState) => [...prevState, { status: false, name: newTask }]);
+    setTasks((prevState) => [...prevState, {
+      status: false,
+      name: newTask
+    }]);
     setNewTask('');
   }
 
   function hanldeToDo(id: number) {
 
   }
+
+  const createdTasks = useMemo(() => (tasks.length ?? 0), [tasks]);
+  const fineshedTasks = useMemo(() => {
+    const finished = tasks.filter(item => item.status === true);
+    return finished.length;
+  }, [tasks]);
 
   return (
     <View style={styles.container}>
@@ -71,12 +82,18 @@ export function Home() {
           </TouchableOpacity>
         </View>
         <View style={styles.headerList}>
-          <Text style={{ color: '#4EA8DE', ...styles.headerListTitle }}>
-            Criadas
-          </Text>
-          <Text style={{ color: '#8284FA', ...styles.headerListTitle }}>
-            Concluidas
-          </Text>
+          <View style={styles.containerheaderListTitle}>
+            <Text style={{ color: '#4EA8DE', ...styles.headerListTitle }}>
+              Criadas
+            </Text>
+            <Counter value={createdTasks} />
+          </View>
+          <View style={styles.containerheaderListTitle}>
+            <Text style={{ color: '#8284FA', ...styles.headerListTitle }}>
+              Concluidas
+            </Text>
+            <Counter value={fineshedTasks} />
+          </View>
         </View>
 
         <FlatList

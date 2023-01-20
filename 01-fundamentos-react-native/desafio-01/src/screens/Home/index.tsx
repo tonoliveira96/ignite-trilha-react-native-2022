@@ -16,6 +16,7 @@ import { Counter } from '../../components/Counter';
 const logo = require('../../images/logo.png');
 
 interface TaskProps {
+  id: string,
   name: string,
   status: boolean,
 }
@@ -23,14 +24,14 @@ interface TaskProps {
 export function Home() {
 
   const [tasks, setTasks] = useState<TaskProps[]>([]);
-  const [newTask, setNewTask] = useState('');
+  const [taskName, setTaskName] = useState('');
 
-  function handleDelete(id: number) {
+  function handleDelete(id: string) {
 
     Alert.alert('Remover', 'Remover tarefa?', [
       {
         text: 'Sim',
-        onPress: () => setTasks(prevState => prevState.splice(id, 1))
+        onPress: () => setTasks(prevState => prevState.filter((task) => task.id !== id))
       },
       {
         text: 'Não',
@@ -40,18 +41,20 @@ export function Home() {
   }
 
   function handleCreate() {
-    if (newTask.length < 3) {
+    if (taskName.length < 3) {
       return Alert.alert("Atenção", "Descrição da terafa deve ter no mínino 3 caracteres.");
     }
     setTasks((prevState) => [...prevState, {
+      id: new Date().getMilliseconds().toString(),
       status: false,
-      name: newTask
+      name: taskName
     }]);
-    setNewTask('');
+    setTaskName('');
   }
 
-  function hanldeToDo(id: number) {
-
+  function hanldeToDo(item: TaskProps) {
+    const filterArray = tasks.filter((task) => task.id !== item.id);
+    setTasks([...filterArray, { ...item, status: !item.status }]);
   }
 
   const createdTasks = useMemo(() => (tasks.length ?? 0), [tasks]);
@@ -71,8 +74,8 @@ export function Home() {
             style={styles.input}
             placeholder='Descrição da tarefa'
             placeholderTextColor='#808080'
-            value={newTask}
-            onChangeText={(e) => { setNewTask(e); }}
+            value={taskName}
+            onChangeText={(e) => { setTaskName(e); }}
           />
           <TouchableOpacity
             style={styles.button}
@@ -105,8 +108,8 @@ export function Home() {
               key={index.toString()}
               name={item.name}
               status={item.status}
-              onRemove={() => handleDelete(index)}
-              onCheck={() => hanldeToDo(index)}
+              onRemove={() => handleDelete(item.id)}
+              onCheck={() => hanldeToDo(item)}
             />
           )}
           showsVerticalScrollIndicator={false}

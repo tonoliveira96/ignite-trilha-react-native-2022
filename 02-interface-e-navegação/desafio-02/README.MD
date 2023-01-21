@@ -1,5 +1,4 @@
-# Desafio-01: ToDo List
-
+# Desafio-02: Daily Diet
 ## Descrição
 Nesse desafio, você vai desenvolver uma aplicação de cadastro de refeições, que contém as seguintes funcionalidades:
 

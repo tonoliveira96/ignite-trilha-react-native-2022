@@ -1,10 +1,11 @@
 
-import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, StatusBar, StyleSheet, View } from 'react-native';
 import { Home } from '@screens/Home';
 import { ThemeProvider } from 'styled-components';
 import { useFonts, NunitoSans_400Regular, NunitoSans_700Bold } from "@expo-google-fonts/nunito-sans";
 
 import theme from "@themes/index";
+import { Loading } from '@components/Loading';
 
 export default function App() {
 
@@ -12,10 +13,15 @@ export default function App() {
     NunitoSans_400Regular,
     NunitoSans_700Bold
   });
-  
+
   return (
     <ThemeProvider theme={theme}>
-      {fontsLoaded ? <Home /> : <ActivityIndicator />}
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor="transparent"
+        translucent
+      />
+      {fontsLoaded ? <Home /> : <Loading />}
     </ThemeProvider>
   );
 }

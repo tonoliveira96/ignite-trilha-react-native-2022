@@ -100,6 +100,7 @@ export function Home() {
       <SectionMealTitle>Refeições</SectionMealTitle>
       <ButtonDefault
         title='Nova refeição'
+        variant='primary'
         icon={<Plus size={18} color='#FFF' />}
       />
 

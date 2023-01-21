@@ -13,7 +13,7 @@ export const Form = styled.View`
   border-top-right-radius: 20px;
 `;
 
-export const ContainerDateAndTime = styled.View`
+export const ContainerTwoColumns = styled.View`
   width: 100%;
   flex-direction: row
 `

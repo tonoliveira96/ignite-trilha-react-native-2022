@@ -3,6 +3,8 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
   flex: 1;
+  max-height: 70px;
+  margin: 16px 0;
 `;
 
 export const LabelInput = styled.Text`

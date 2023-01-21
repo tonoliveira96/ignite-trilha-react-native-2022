@@ -11,15 +11,16 @@ import {
 } from './styles';
 
 
-interface HeaderProps extends VariantsHeader {
+interface HeaderProps {
   title: string;
+  variant: VariantsHeader;
   percentage?: string;
 }
 
 export function Header({ title, variant, percentage }: HeaderProps) {
   return (
     <Container variant={variant}>
-      <BackButton>
+      <BackButton variant={variant}>
         <BackIcon />
       </BackButton>
       {variant === 'deafult' && <Title>{title}</Title>}

@@ -1,4 +1,4 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import { ArrowUpRight } from 'phosphor-react-native';
 import { TouchableOpacity } from 'react-native';
 
@@ -38,9 +38,11 @@ export const DietCard = styled(TouchableOpacity)`
 `;
 
 export const SectioHeader = styled.Text`
-  font-size: ${({ theme }) => theme.FONT_SIZE.TITLE_S}px;
-  color: ${({ theme }) => theme.COLORS.GRAY_100};
-  font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
+  ${({ theme }) => css`
+    font-size: ${theme.FONT_SIZE.TITLE_S}px;
+    color: ${theme.COLORS.GRAY_100};
+    font-family: ${theme.FONT_FAMILY.BOLD};
+  `}
 
   margin-top: 24px;
 `;
@@ -58,9 +60,11 @@ export const SectionItem = styled.View`
 `;
 
 export const SectionMealTime = styled.Text`
-  color: ${({ theme }) => theme.COLORS.GRAY_100};
-  font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
-  font-size: ${({ theme }) => theme.FONT_SIZE.BODY_XS}px;
+  ${({ theme }) => css`
+    color: ${theme.COLORS.GRAY_100};
+    font-family: ${theme.FONT_FAMILY.BOLD};
+    font-size: ${theme.FONT_SIZE.BODY_XS}px;
+  `}
 `;
 
 export const SectionMealItemDivisor = styled.Text`

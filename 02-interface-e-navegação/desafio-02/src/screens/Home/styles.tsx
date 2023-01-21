@@ -37,18 +37,6 @@ export const DietCard = styled(TouchableOpacity)`
   background-color: ${({ theme }) => theme.COLORS.GREEN_LIGHT};
 `;
 
-export const TitleDietCard = styled.Text`
-  font-size: ${({ theme }) => theme.FONT_SIZE.TITLE_G}px;
-  color: ${({ theme }) => theme.COLORS.GRAY_100};
-  font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
-`;
-
-export const SubtitleDietCard = styled.Text`
-  font-size: ${({ theme }) => theme.FONT_SIZE.BODY_S}px;
-  color: ${({ theme }) => theme.COLORS.GRAY_200};
-  font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
-`;
-
 export const SectioHeader = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.TITLE_S}px;
   color: ${({ theme }) => theme.COLORS.GRAY_100};
@@ -73,15 +61,17 @@ export const SectionMealTime = styled.Text`
   color: ${({ theme }) => theme.COLORS.GRAY_100};
   font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
   font-size: ${({ theme }) => theme.FONT_SIZE.BODY_XS}px;
-  padding-right: 8px;
+`;
+
+export const SectionMealItemDivisor = styled.Text`
+  color: ${({ theme }) => theme.COLORS.GRAY_400};
 `;
 
 export const SectionMealTitle = styled.Text`
-  flex: 1;
+  width: 70%;
   color: ${({ theme }) => theme.COLORS.GRAY_200};
   font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
   font-size: ${({ theme }) => theme.FONT_SIZE.BODY_M}px;
-  padding: 0 8px;
 `;
 
 export const DietStatus = styled.View<DietStatusProps>`

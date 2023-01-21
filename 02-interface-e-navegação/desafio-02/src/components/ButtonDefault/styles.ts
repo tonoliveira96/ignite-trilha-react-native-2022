@@ -9,6 +9,7 @@ export const Container = styled(TouchableOpacity)`
   flex-direction: row;
   background-color: ${({ theme }) => theme.COLORS.GRAY_200};
   border-radius: 6px;
+  margin-top: 12px;
 `;
 
 export const Title = styled.Text`

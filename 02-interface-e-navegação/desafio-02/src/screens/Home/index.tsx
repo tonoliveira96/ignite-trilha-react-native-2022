@@ -8,16 +8,16 @@ import {
   Openicon,
   SectioHeader,
   SectionItem,
+  SectionMealItemDivisor,
   SectionMealTime,
   SectionMealTitle,
-  SubtitleDietCard,
-  TitleDietCard,
 } from './styles';
 import { Plus } from 'phosphor-react-native';
 import logo from '@assets/Logo.png';
 import { ButtonDefault } from '@components/ButtonDefault';
 import { useState } from 'react';
 import { EmptyList } from '@components/EmptyList';
+import { SubtitleDietCard, TitleDietCard } from '@components/Header/styles';
 
 interface MealsProps {
   date: string;
@@ -36,7 +36,7 @@ export function Home() {
       data: [
         {
           time: '14:00',
-          name: 'Gelatina',
+          name: 'Um copo de whey batindo com leite',
           description: 'feita em casa',
           inDiet: true,
         },
@@ -97,6 +97,7 @@ export function Home() {
         <TitleDietCard>90,89%</TitleDietCard>
         <SubtitleDietCard>das refeições dentro da dieta</SubtitleDietCard>
       </DietCard>
+      <SectionMealTitle>Refeições</SectionMealTitle>
       <ButtonDefault
         title='Nova refeição'
         icon={<Plus size={18} color='#FFF' />}
@@ -108,8 +109,8 @@ export function Home() {
         renderItem={({ item }) => (
           <SectionItem>
             <SectionMealTime>{item.time}</SectionMealTime>
-            <Text>|</Text>
-            <SectionMealTitle>{item.name}</SectionMealTitle>
+            <SectionMealItemDivisor>|</SectionMealItemDivisor>
+            <SectionMealTitle numberOfLines={1}>{item.name}</SectionMealTitle>
             <DietStatus inDiet={item.inDiet} />
           </SectionItem>
         )}

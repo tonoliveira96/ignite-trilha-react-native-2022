@@ -7,6 +7,7 @@ import { useFonts, NunitoSans_400Regular, NunitoSans_700Bold } from "@expo-googl
 import theme from "@themes/index";
 import { Loading } from '@components/Loading';
 import { Create } from '@screens/Create';
+import { Details } from '@screens/Details';
 
 export default function App() {
 
@@ -22,7 +23,7 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      {fontsLoaded ? <Create /> : <Loading />}
+      {fontsLoaded ? <Details /> : <Loading />}
     </ThemeProvider>
   );
 }

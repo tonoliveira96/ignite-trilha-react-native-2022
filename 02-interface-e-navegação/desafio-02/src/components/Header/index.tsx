@@ -23,13 +23,7 @@ export function Header({ title, variant, percentage }: HeaderProps) {
       <BackButton variant={variant}>
         <BackIcon />
       </BackButton>
-      {variant === 'deafult' && <Title>{title}</Title>}
-      {variant !== 'deafult' && (
-        <ContainerPercentage>
-          <TitleDietCard>{percentage}</TitleDietCard>
-          <SubtitleDietCard>das refeições dentro da dieta</SubtitleDietCard>
-        </ContainerPercentage>
-      )}
+      <Title>{title}</Title>
     </Container>
   );
 }

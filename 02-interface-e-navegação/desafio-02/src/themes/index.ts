@@ -12,7 +12,7 @@ export default {
     GRAY_100: '#1B1D1E',
 
     GREEN_LIGHT: '#E5F0DB',
-    GREEN_mid: '#CBE4B4',
+    GREEN_MID: '#CBE4B4',
     GREEN_DARK: '#639339',
 
     RED_LIGHT: '#F4E6E7',

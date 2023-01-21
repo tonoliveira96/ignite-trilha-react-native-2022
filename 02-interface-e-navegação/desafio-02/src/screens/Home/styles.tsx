@@ -25,6 +25,7 @@ export const DietCard = styled.TouchableOpacity`
   width: 100%;
   align-items: center;
   position: relative;
+  margin: 24px 0;
   height: 102px;
   border-radius: 8px;
   padding: 20px;

@@ -16,4 +16,4 @@ export const Form = styled.View`
 export const ContainerTwoColumns = styled.View`
   width: 100%;
   flex-direction: row
-`
+`;

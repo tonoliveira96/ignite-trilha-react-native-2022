@@ -1,13 +1,9 @@
-
-import { ActivityIndicator, StatusBar, StyleSheet, View } from 'react-native';
-import { Home } from '@screens/Home';
-import { ThemeProvider } from 'styled-components';
-import { useFonts, NunitoSans_400Regular, NunitoSans_700Bold } from "@expo-google-fonts/nunito-sans";
-
-import theme from "@themes/index";
 import { Loading } from '@components/Loading';
-import { Create } from '@screens/Create';
+import { NunitoSans_400Regular, NunitoSans_700Bold, useFonts } from "@expo-google-fonts/nunito-sans";
 import { Details } from '@screens/Details';
+import theme from "@themes/index";
+import { StatusBar } from 'react-native';
+import { ThemeProvider } from 'styled-components';
 
 export default function App() {
 

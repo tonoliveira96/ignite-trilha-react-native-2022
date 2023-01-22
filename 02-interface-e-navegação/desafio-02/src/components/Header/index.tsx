@@ -2,15 +2,8 @@ import React from 'react';
 import {
   BackButton,
   BackIcon,
-  Container,
-  ContainerPercentage,
-  SubtitleDietCard,
-  Title,
-  TitleDietCard,
-  VariantsHeader,
+  Container, Title, VariantsHeader
 } from './styles';
-
-
 interface HeaderProps {
   title: string;
   variant: VariantsHeader;

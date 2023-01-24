@@ -8,9 +8,9 @@ type ButtonDefaultProps = TouchableOpacityProps & {
   variant: ButtonDefaultTypes;
 };
 
-export function ButtonDefault({ title, icon, variant }: ButtonDefaultProps) {
+export function ButtonDefault({ title, icon, variant, ...rest }: ButtonDefaultProps) {
   return (
-    <Container variant={variant}>
+    <Container variant={variant} {...rest}>
       {icon && (icon)}
       <Title variant={variant}>{title}</Title>
     </Container>

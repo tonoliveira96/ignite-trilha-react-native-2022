@@ -1,4 +1,11 @@
-import { FlatList, Image, SectionList, Text } from 'react-native';
+import logo from '@assets/Logo.png';
+import { ButtonDefault } from '@components/ButtonDefault';
+import { EmptyList } from '@components/EmptyList';
+import { SubtitleDietCard, TitleDietCard } from '@components/Header/styles';
+import { useNavigation } from "@react-navigation/native";
+import { Plus } from 'phosphor-react-native';
+import { useState } from 'react';
+import { Image, SectionList } from 'react-native';
 import {
   Container,
   DietCard,
@@ -10,14 +17,8 @@ import {
   SectionItem,
   SectionMealItemDivisor,
   SectionMealTime,
-  SectionMealTitle,
+  SectionMealTitle
 } from './styles';
-import { Plus } from 'phosphor-react-native';
-import logo from '@assets/Logo.png';
-import { ButtonDefault } from '@components/ButtonDefault';
-import { useState } from 'react';
-import { EmptyList } from '@components/EmptyList';
-import { SubtitleDietCard, TitleDietCard } from '@components/Header/styles';
 
 interface MealsProps {
   date: string;
@@ -84,6 +85,11 @@ export function Home() {
     },
   ]);
 
+  const navigation = useNavigation();
+  function handleNewMeal() {
+    navigation.navigate('create');
+  }
+
   return (
     <Container>
       <HeaderHome>
@@ -102,6 +108,7 @@ export function Home() {
         title='Nova refeição'
         variant='primary'
         icon={<Plus size={18} color='#FFF' />}
+        onPress={handleNewMeal}
       />
 
       <SectionList

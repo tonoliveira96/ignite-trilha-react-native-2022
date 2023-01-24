@@ -1,9 +1,9 @@
 import { Loading } from '@components/Loading';
 import { NunitoSans_400Regular, NunitoSans_700Bold, useFonts } from "@expo-google-fonts/nunito-sans";
-import { Details } from '@screens/Details';
+import { Routes } from '@routes/index';
 import theme from "@themes/index";
 import { StatusBar } from 'react-native';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components/native';
 
 export default function App() {
 
@@ -19,7 +19,7 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      {fontsLoaded ? <Details /> : <Loading />}
+      {fontsLoaded ? <Routes /> : <Loading />}
     </ThemeProvider>
   );
 }

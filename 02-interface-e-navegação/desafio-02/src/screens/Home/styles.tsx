@@ -1,12 +1,13 @@
-import styled, { css } from 'styled-components/native';
 import { ArrowUpRight } from 'phosphor-react-native';
 import { TouchableOpacity } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import styled, { css } from 'styled-components/native';
 
 type DietStatusProps = {
   inDiet: boolean;
 };
 
-export const Container = styled.View`
+export const Container = styled(SafeAreaView)`
   flex: 1;
   padding: 24px;
   background: ${({ theme }) => theme.COLORS.WHITE};
@@ -15,7 +16,6 @@ export const Container = styled.View`
 export const HeaderHome = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  padding: 24px 0;
 `;
 
 export const ImageProfile = styled.Image`
@@ -47,7 +47,7 @@ export const SectioHeader = styled.Text`
   margin-top: 24px;
 `;
 
-export const SectionItem = styled.View`
+export const SectionItem = styled(TouchableOpacity)`
   width: 100%;
   flex-direction: row;
   align-items: center;

@@ -1,32 +1,32 @@
 import { ButtonDefault } from '@components/ButtonDefault';
+import { CircleStatus } from '@components/CircleStatus';
 import { ContainerForm } from '@components/ContainerForm';
 import { Header } from '@components/Header';
-import { InDietButton } from '@components/InDietButton';
-import { InputForm } from '@components/InputForm';
-import { LabelInput } from '@components/InputForm/styles';
+import { useRoute } from '@react-navigation/native';
 import { Pencil, Trash } from 'phosphor-react-native';
 import React from 'react';
 
-import { Container, ContainerTwoColumns, Form } from './styles';
+import { Container, Content, DateDetails, Description, DetailDietStatus, DetailDietStatusText, Title } from './styles';
 
 export function Details() {
+  const route = useRoute();
+
+  const { name } = route
+
   return (
     <Container>
       <Header title='Refeição' variant='green' />
       <ContainerForm>
-        <Form>
-          <InputForm title='Nome' placeholder='Refeição' />
-          <InputForm title='Descrição' placeholder='Descreva sua refeição' />
-          <ContainerTwoColumns>
-            <InputForm title='Data' placeholder='00/00/0000' />
-            <InputForm title='Hora' placeholder='00:00' />
-          </ContainerTwoColumns>
-          <LabelInput>Está dentro da dieta?</LabelInput>
-          <ContainerTwoColumns>
-            <InDietButton value='sim' title='Sim' />
-            <InDietButton value='nao' title='Não' />
-          </ContainerTwoColumns>
-        </Form>
+        <Content>
+          <Title>Nomeee</Title>
+          <Description>Descriptionnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn</Description>
+          <DateDetails>Data e hora</DateDetails>
+          <Description>12/08/2022 às 16:00</Description>
+          <DetailDietStatus>
+            <CircleStatus dietStatus />
+            <DetailDietStatusText>dentro da dieta</DetailDietStatusText>
+          </DetailDietStatus>
+        </Content>
         <ButtonDefault
           variant='primary'
           title='Editar refeição'

@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import {
   BackButton,
@@ -11,9 +12,13 @@ interface HeaderProps {
 }
 
 export function Header({ title, variant, percentage }: HeaderProps) {
+  const navigation = useNavigation()
+  function handleBack(){
+    navigation.goBack()
+  }
   return (
     <Container variant={variant}>
-      <BackButton variant={variant}>
+      <BackButton variant={variant} onPress={handleBack}>
         <BackIcon />
       </BackButton>
       <Title>{title}</Title>

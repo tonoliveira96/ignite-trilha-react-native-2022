@@ -86,8 +86,13 @@ export function Home() {
   ]);
 
   const navigation = useNavigation();
+
   function handleNewMeal() {
     navigation.navigate('create');
+  }
+
+  function handleDetails(id: string) {
+    navigation.navigate('details', { id });
   }
 
   return (
@@ -115,7 +120,7 @@ export function Home() {
         sections={meals}
         keyExtractor={(item, index) => item.description + index}
         renderItem={({ item }) => (
-          <SectionItem>
+          <SectionItem onPress={() => handleDetails(item.name)}>
             <SectionMealTime>{item.time}</SectionMealTime>
             <SectionMealItemDivisor>|</SectionMealItemDivisor>
             <SectionMealTitle numberOfLines={1}>{item.name}</SectionMealTitle>

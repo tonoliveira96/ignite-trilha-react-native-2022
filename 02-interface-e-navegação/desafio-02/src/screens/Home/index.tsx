@@ -2,9 +2,10 @@ import logo from '@assets/Logo.png';
 import { ButtonDefault } from '@components/ButtonDefault';
 import { EmptyList } from '@components/EmptyList';
 import { SubtitleDietCard, TitleDietCard } from '@components/Header/styles';
-import { useNavigation } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import { getAllMeals } from '@storage/getAllMeals';
 import { Plus } from 'phosphor-react-native';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Image, SectionList } from 'react-native';
 import {
   Container,
@@ -20,7 +21,7 @@ import {
   SectionMealTitle
 } from './styles';
 
-interface MealsProps {
+export interface MealsProps {
   date: string;
   data: Array<{
     time: string;
@@ -94,6 +95,19 @@ export function Home() {
   function handleDetails(id: string) {
     navigation.navigate('details', { id });
   }
+
+  async function fetchMeals() {
+    try {
+      const data = await getAllMeals();
+      // setMeals(data)
+    } catch (error) {
+
+    }
+  }
+
+  useFocusEffect(useCallback(() => {
+    fetchMeals();
+  }, []));
 
   return (
     <Container>

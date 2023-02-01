@@ -30,7 +30,7 @@ export function Details() {
         <ButtonDefault
           variant='primary'
           title='Editar refeição'
-          icon={<Pencil size={18} />}
+          icon={<Pencil size={18}  color="#FFF"/>}
         />
         <ButtonDefault
           variant='secondary'

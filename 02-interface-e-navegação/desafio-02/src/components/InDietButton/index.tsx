@@ -1,15 +1,16 @@
+import { CircleStatus } from '@components/CircleStatus';
 import React from 'react';
-import { ButtonText, Container, IconValue, inDietValuetypes } from './styles';
+import { ButtonText, Container } from './styles';
 
 interface InDietButtonProps {
   title: string;
-  value: inDietValuetypes;
+  value: boolean
 }
 
 export function InDietButton({ title, value }: InDietButtonProps) {
   return (
     <Container>
-      <IconValue value={value} />
+      <CircleStatus dietStatus={value} />
       <ButtonText>{title}</ButtonText>
     </Container>
   );

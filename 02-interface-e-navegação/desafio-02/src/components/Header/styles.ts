@@ -10,7 +10,7 @@ type Props = {
 
 export const Container = styled.View<Props>`
   width: 100%;
-  height: 132px;
+  min-height: 132px;
   align-items: center;
   padding: 24px;
   flex-direction: row;
@@ -43,7 +43,8 @@ export const SubtitleDietCard = styled.Text`
 `;
 
 export const ContainerPercentage = styled.View`
-  flex: 1;
+  width: 100%;
+  padding: 30px;
   align-items: center;
   justify-content: center;
 `;

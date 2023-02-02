@@ -31,7 +31,7 @@ export const Description = styled.Text`
 `;
 
 export const DateDetails = styled.Text`
-  margin-top: 12px;
+  margin-top: 24px;
   ${({ theme }) => css`
     font-size: ${theme.FONT_SIZE.TITLE_S}px;
     color: ${theme.COLORS.GRAY_100};
@@ -47,6 +47,7 @@ export const DetailDietStatus = styled.View`
   background-color: ${({ theme }) => theme.COLORS.GRAY_600};
   padding: 8px;
   border-radius: 25px;
+  margin-top: 24px;
 `;
 
 export const DetailDietStatusText = styled.Text`

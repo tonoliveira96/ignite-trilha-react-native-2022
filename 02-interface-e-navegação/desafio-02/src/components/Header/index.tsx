@@ -3,7 +3,7 @@ import React from 'react';
 import {
   BackButton,
   BackIcon,
-  Container, Title, VariantsHeader
+  Container, ContainerPercentage, SubtitleDietCard, Title, TitleDietCard, VariantsHeader
 } from './styles';
 interface HeaderProps {
   title: string;
@@ -12,9 +12,9 @@ interface HeaderProps {
 }
 
 export function Header({ title, variant, percentage }: HeaderProps) {
-  const navigation = useNavigation()
-  function handleBack(){
-    navigation.goBack()
+  const navigation = useNavigation();
+  function handleBack() {
+    navigation.goBack();
   }
   return (
     <Container variant={variant}>
@@ -22,6 +22,12 @@ export function Header({ title, variant, percentage }: HeaderProps) {
         <BackIcon />
       </BackButton>
       <Title>{title}</Title>
+      {percentage && (
+        <ContainerPercentage>
+          <TitleDietCard>90,89%</TitleDietCard>
+          <SubtitleDietCard>das refeições dentro da dieta</SubtitleDietCard>
+        </ContainerPercentage >
+      )}
     </Container>
   );
 }

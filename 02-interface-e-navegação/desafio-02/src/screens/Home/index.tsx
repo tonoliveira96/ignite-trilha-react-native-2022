@@ -96,6 +96,10 @@ export function Home() {
     navigation.navigate('details', { id });
   }
 
+  function handleDStatistic() {
+    navigation.navigate('statistic');
+  }
+
   async function fetchMeals() {
     try {
       const data = await getAllMeals();
@@ -117,7 +121,7 @@ export function Home() {
           source={{ uri: 'https://github.com/tonoliveira96.png' }}
         />
       </HeaderHome>
-      <DietCard>
+      <DietCard onPress={handleDStatistic}>
         <Openicon />
         <TitleDietCard>90,89%</TitleDietCard>
         <SubtitleDietCard>das refeições dentro da dieta</SubtitleDietCard>

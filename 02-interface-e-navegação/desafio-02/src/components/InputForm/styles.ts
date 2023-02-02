@@ -11,12 +11,12 @@ export const LabelInput = styled.Text`
   font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
   color: ${({ theme }) => theme.COLORS.GRAY_200};
   font-size: ${({ theme }) => theme.FONT_SIZE.TITLE_XS}px;
-
   padding-bottom: 8px;
 `;
 
 export const InputComponent = styled(TextInput)`
-  width: 100%;
+  flex: 1;
+  min-height:48px;
   font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
   color: ${({ theme }) => theme.COLORS.GRAY_100};
   font-size: ${({ theme }) => theme.FONT_SIZE.BODY_M}px;

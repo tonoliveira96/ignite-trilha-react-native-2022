@@ -26,7 +26,7 @@ export const ImageProfile = styled.Image`
   border: 2px solid ${({ theme }) => theme.COLORS.GRAY_200};
 `;
 
-export const DietCard = styled(TouchableOpacity)`
+export const DietCard = styled(TouchableOpacity)<DietStatusProps>`
   width: 100%;
   align-items: center;
   position: relative;
@@ -34,7 +34,7 @@ export const DietCard = styled(TouchableOpacity)`
   height: 102px;
   border-radius: 8px;
   padding: 20px;
-  background-color: ${({ theme }) => theme.COLORS.GREEN_LIGHT};
+  background-color: ${({ theme, inDiet }) => inDiet ? theme.COLORS.GREEN_LIGHT : theme.COLORS.RED_LIGHT};
 `;
 
 export const SectioHeader = styled.Text`

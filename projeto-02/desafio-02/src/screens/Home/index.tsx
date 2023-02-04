@@ -32,60 +32,22 @@ export interface MealsListProps {
   }>;
 }
 
+interface DietSummaryProps{
+  percentage: number,
+  inDietTotal: number;
+  outDietTotal: number;
+  mealsTotal: number;
+}
+
 export function Home() {
-  const [meals, setMeals] = useState<MealsListProps[]>([
-    // {
-    //   date: '2023-01-19',
-    //   data: [
-    //     {
-    //       time: '14:00',
-    //       name: 'Um copo de whey batindo com leite',
-    //       description: 'feita em casa',
-    //       inDiet: true,
-    //     },
-    //     {
-    //       time: '14:00',
-    //       name: 'Gelatina',
-    //       description: 'feita em casa',
-    //       inDiet: false,
-    //     },
-    //   ],
-    // },
-    // {
-    //   date: '2023-01-20',
-    //   data: [
-    //     {
-    //       time: '14:00',
-    //       name: 'Gelatina',
-    //       description: 'feita em casa',
-    //       inDiet: true,
-    //     },
-    //     {
-    //       time: '14:00',
-    //       name: 'Gelatina',
-    //       description: 'feita em casa',
-    //       inDiet: false,
-    //     },
-    //   ],
-    // },
-    // {
-    //   date: '2023-01-21',
-    //   data: [
-    //     {
-    //       time: '14:00',
-    //       name: 'Gelatina',
-    //       description: 'feita em casa',
-    //       inDiet: true,
-    //     },
-    //     {
-    //       time: '14:00',
-    //       name: 'Gelatina',
-    //       description: 'feita em casa',
-    //       inDiet: true,
-    //     },
-    //   ],
-    // },
-  ]);
+  const [meals, setMeals] = useState<MealsListProps[]>([]);
+  const [inDietMeals, setInDietMeals] = useState(0);
+  const [dietSummary, setDietSummary] = useState<DietSummaryProps>({
+    inDietTotal: 0,
+    mealsTotal: 0,
+    outDietTotal: 0,
+    percentage: 0
+  })
 
   const navigation = useNavigation();
 
@@ -104,6 +66,8 @@ export function Home() {
   async function fetchMeals() {
     try {
       const data = await getAllMeals();
+      const inDiestAmount = data.filter((item: any) => item.inDiet === true).length;
+      const total = data.length;
       const mappeddata: MealsListProps[] = data.map((item: any, index, array) => {
         const arrayMeal = array.filter((date: any) => date.date === item.date).map((filtred: any) => ({
           id: filtred.id,
@@ -121,6 +85,7 @@ export function Home() {
         );
       });
       setMeals(mappeddata);
+      
     } catch (error) {
       console.log(error);
     }
@@ -138,9 +103,9 @@ export function Home() {
           source={{ uri: 'https://github.com/tonoliveira96.png' }}
         />
       </HeaderHome>
-      <DietCard onPress={handleDStatistic}>
+      <DietCard onPress={handleDStatistic} inDiet={dietSummary.percentage >= 50}>
         <Openicon />
-        <TitleDietCard>90,89%</TitleDietCard>
+        <TitleDietCard>{dietSummary.percentage.toFixed(2)}%</TitleDietCard>
         <SubtitleDietCard>das refeições dentro da dieta</SubtitleDietCard>
       </DietCard>
       <SectionMealTitle>Refeições</SectionMealTitle>

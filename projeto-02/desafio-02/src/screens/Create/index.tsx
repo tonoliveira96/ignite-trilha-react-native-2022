@@ -27,7 +27,7 @@ export function Create() {
   const [description, setDescription] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
-  const [inDiet, setInDiet] = useState<boolean>(false);
+  const [inDiet, setInDiet] = useState<boolean>(true);
 
   const [checked, setChecked] = useState<boolean>(false);
 

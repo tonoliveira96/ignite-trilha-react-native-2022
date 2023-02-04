@@ -1,8 +1,9 @@
 import { Roboto_400Regular, Roboto_700Bold, useFonts } from "@expo-google-fonts/roboto";
 import { NativeBaseProvider } from "native-base";
 import React from "react";
-import { StatusBar, View } from 'react-native';
+import { StatusBar } from 'react-native';
 import { Loading } from './src/components/Loading';
+import { Singnin } from './src/screens/Signin';
 import { THEME } from './src/theme';
 
 
@@ -16,7 +17,7 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      {fontsLoaded ? <View/> : <Loading />}
+      {fontsLoaded ? <Singnin/> : <Loading />}
     </NativeBaseProvider>
   );
 }

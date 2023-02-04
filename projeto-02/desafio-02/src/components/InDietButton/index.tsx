@@ -6,11 +6,12 @@ import { ButtonText, Container } from './styles';
 type InDietButtonProps = TouchableOpacityProps & {
   title: string;
   value: boolean;
+  checked?: boolean;
 };
 
-export function InDietButton({ title, value, ...rest }: InDietButtonProps) {
+export function InDietButton({ title, value, checked, ...rest }: InDietButtonProps) {
   return (
-    <Container>
+    <Container value={value} selected={checked}>
       <CircleStatus dietStatus={value} {...rest} />
       <ButtonText>{title}</ButtonText>
     </Container>

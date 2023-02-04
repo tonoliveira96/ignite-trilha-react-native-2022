@@ -25,7 +25,7 @@ export const CardMain = styled.View`
   width: 100%;
   align-items:center;
   background-color: ${({ theme }) => theme.COLORS.GRAY_600};
-  border-radius: 8;
+  border-radius: 8px;
   padding: 24px 12px;
   margin-top: 12px;
 `;

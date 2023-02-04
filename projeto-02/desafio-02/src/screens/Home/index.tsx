@@ -21,9 +21,10 @@ import {
   SectionMealTitle
 } from './styles';
 
-export interface MealsProps {
+export interface MealsListProps {
   date: string;
   data: Array<{
+    id: string,
     time: string;
     inDiet: boolean;
     name: string;
@@ -32,58 +33,58 @@ export interface MealsProps {
 }
 
 export function Home() {
-  const [meals, setMeals] = useState<MealsProps[]>([
-    {
-      date: '2023-01-19',
-      data: [
-        {
-          time: '14:00',
-          name: 'Um copo de whey batindo com leite',
-          description: 'feita em casa',
-          inDiet: true,
-        },
-        {
-          time: '14:00',
-          name: 'Gelatina',
-          description: 'feita em casa',
-          inDiet: false,
-        },
-      ],
-    },
-    {
-      date: '2023-01-20',
-      data: [
-        {
-          time: '14:00',
-          name: 'Gelatina',
-          description: 'feita em casa',
-          inDiet: true,
-        },
-        {
-          time: '14:00',
-          name: 'Gelatina',
-          description: 'feita em casa',
-          inDiet: false,
-        },
-      ],
-    },
-    {
-      date: '2023-01-21',
-      data: [
-        {
-          time: '14:00',
-          name: 'Gelatina',
-          description: 'feita em casa',
-          inDiet: true,
-        },
-        {
-          time: '14:00',
-          name: 'Gelatina',
-          description: 'feita em casa',
-          inDiet: true,
-        },
-      ],
-    },
+  const [meals, setMeals] = useState<MealsListProps[]>([
+    // {
+    //   date: '2023-01-19',
+    //   data: [
+    //     {
+    //       time: '14:00',
+    //       name: 'Um copo de whey batindo com leite',
+    //       description: 'feita em casa',
+    //       inDiet: true,
+    //     },
+    //     {
+    //       time: '14:00',
+    //       name: 'Gelatina',
+    //       description: 'feita em casa',
+    //       inDiet: false,
+    //     },
+    //   ],
+    // },
+    // {
+    //   date: '2023-01-20',
+    //   data: [
+    //     {
+    //       time: '14:00',
+    //       name: 'Gelatina',
+    //       description: 'feita em casa',
+    //       inDiet: true,
+    //     },
+    //     {
+    //       time: '14:00',
+    //       name: 'Gelatina',
+    //       description: 'feita em casa',
+    //       inDiet: false,
+    //     },
+    //   ],
+    // },
+    // {
+    //   date: '2023-01-21',
+    //   data: [
+    //     {
+    //       time: '14:00',
+    //       name: 'Gelatina',
+    //       description: 'feita em casa',
+    //       inDiet: true,
+    //     },
+    //     {
+    //       time: '14:00',
+    //       name: 'Gelatina',
+    //       description: 'feita em casa',
+    //       inDiet: true,
+    //     },
+    //   ],
+    // },
   ]);
 
   const navigation = useNavigation();
@@ -103,9 +104,25 @@ export function Home() {
   async function fetchMeals() {
     try {
       const data = await getAllMeals();
-      // setMeals(data)
+      const mappeddata: MealsListProps[] = data.map((item: any, index, array) => {
+        const arrayMeal = array.filter((date: any) => date.date === item.date).map((filtred: any) => ({
+          id: filtred.id,
+          time: filtred.time,
+          name: filtred.name,
+          description: filtred.description,
+          inDiet: filtred.inDiet,
+        }
+        ));
+        return (
+          {
+            date: item.date,
+            data: arrayMeal
+          }
+        );
+      });
+      setMeals(mappeddata);
     } catch (error) {
-
+      console.log(error);
     }
   }
 
@@ -138,7 +155,7 @@ export function Home() {
         sections={meals}
         keyExtractor={(item, index) => item.description + index}
         renderItem={({ item }) => (
-          <SectionItem onPress={() => handleDetails(item.name)}>
+          <SectionItem onPress={() => handleDetails(item.id)}>
             <SectionMealTime>{item.time}</SectionMealTime>
             <SectionMealItemDivisor>|</SectionMealItemDivisor>
             <SectionMealTitle numberOfLines={1}>{item.name}</SectionMealTitle>

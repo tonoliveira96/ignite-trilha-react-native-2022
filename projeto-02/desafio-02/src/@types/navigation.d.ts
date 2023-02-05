@@ -7,6 +7,9 @@ export declare global {
       details: {
         id: string;
       }
+      feedback: {
+        indiet: boolean;
+      }
     }
   }
 }

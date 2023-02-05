@@ -32,7 +32,7 @@ export function Create() {
   const [checked, setChecked] = useState<boolean>(false);
 
   function handleInDiet(value: 'sim' | 'nao') {
-    setInDiet(value === 'sim');
+    setInDiet(value === 'sim' ? true : false);
   }
 
   async function handleNew() {
@@ -53,7 +53,7 @@ export function Create() {
     }
     try {
       await mealCreate(meal);
-      navigation.navigate("home");
+      navigation.navigate("feedback", { indiet: inDiet });
     } catch (error) {
       if (error instanceof AppError) {
         Alert.alert("Nova refeição", error.message);

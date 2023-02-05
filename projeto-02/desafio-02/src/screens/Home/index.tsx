@@ -4,9 +4,11 @@ import { EmptyList } from '@components/EmptyList';
 import { SubtitleDietCard, TitleDietCard } from '@components/Header/styles';
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { getAllMeals } from '@storage/getAllMeals';
+import { saveSummary } from '@storage/saveSummary';
 import { Plus } from 'phosphor-react-native';
 import { useCallback, useState } from 'react';
 import { Image, SectionList } from 'react-native';
+import { useTheme } from 'styled-components/native';
 import {
   Container,
   DietCard,
@@ -32,7 +34,7 @@ export interface MealsListProps {
   }>;
 }
 
-interface DietSummaryProps{
+export interface DietSummaryProps {
   percentage: number,
   inDietTotal: number;
   outDietTotal: number;
@@ -41,15 +43,15 @@ interface DietSummaryProps{
 
 export function Home() {
   const [meals, setMeals] = useState<MealsListProps[]>([]);
-  const [inDietMeals, setInDietMeals] = useState(0);
   const [dietSummary, setDietSummary] = useState<DietSummaryProps>({
     inDietTotal: 0,
     mealsTotal: 0,
     outDietTotal: 0,
     percentage: 0
-  })
+  });
 
   const navigation = useNavigation();
+  const { COLORS } = useTheme();
 
   function handleNewMeal() {
     navigation.navigate('create');
@@ -85,7 +87,20 @@ export function Home() {
         );
       });
       setMeals(mappeddata);
-      
+
+      setDietSummary({
+        inDietTotal: inDiestAmount,
+        outDietTotal: total - inDiestAmount,
+        mealsTotal: total,
+        percentage: ((inDiestAmount * 100) / total)
+      })
+
+      await saveSummary({
+        inDietTotal: inDiestAmount,
+        outDietTotal: total - inDiestAmount,
+        mealsTotal: total,
+        percentage: ((inDiestAmount * 100) / total)
+      });
     } catch (error) {
       console.log(error);
     }
@@ -103,8 +118,11 @@ export function Home() {
           source={{ uri: 'https://github.com/tonoliveira96.png' }}
         />
       </HeaderHome>
-      <DietCard onPress={handleDStatistic} inDiet={dietSummary.percentage >= 50}>
-        <Openicon />
+      <DietCard
+        onPress={handleDStatistic}
+        inDiet={dietSummary.percentage >= 50}
+      >
+        <Openicon color={dietSummary.percentage >= 50 ? COLORS.GREEN_DARK : COLORS.RED_DARK} />
         <TitleDietCard>{dietSummary.percentage.toFixed(2)}%</TitleDietCard>
         <SubtitleDietCard>das refeições dentro da dieta</SubtitleDietCard>
       </DietCard>

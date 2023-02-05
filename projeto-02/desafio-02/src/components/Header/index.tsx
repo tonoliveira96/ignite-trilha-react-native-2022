@@ -24,7 +24,7 @@ export function Header({ title, variant, percentage }: HeaderProps) {
       <Title>{title}</Title>
       {percentage && (
         <ContainerPercentage>
-          <TitleDietCard>90,89%</TitleDietCard>
+          <TitleDietCard>{percentage}</TitleDietCard>
           <SubtitleDietCard>das refeições dentro da dieta</SubtitleDietCard>
         </ContainerPercentage >
       )}

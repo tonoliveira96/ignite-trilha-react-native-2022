@@ -89,7 +89,6 @@ export const DietStatus = styled.View<DietStatusProps>`
 
 export const Openicon = styled(ArrowUpRight).attrs(({ theme }) => ({
   size: 24,
-  color: theme.COLORS.GREEN_DARK,
 }))`
   position: absolute;
   right: 0;

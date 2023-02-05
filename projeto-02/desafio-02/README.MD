@@ -15,3 +15,4 @@ Nesse desafio, você vai desenvolver uma aplicação de cadastro de refeições,
 - Estilização com `Styled Components`
 
 ## Interface
+![](https://raw.githubusercontent.com/tonoliveira96/ignite-trilha-react-native-2022/main/assets/rn-2022-desafio-02.gif)

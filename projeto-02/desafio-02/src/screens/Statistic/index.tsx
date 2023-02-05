@@ -18,7 +18,6 @@ export function Statistic() {
   async function fetchSummary() {
     try {
       const data = await getSummary();
-      console.log("SUMMARY:", data)
       setDietSummary(data);
     } catch (err) {
 

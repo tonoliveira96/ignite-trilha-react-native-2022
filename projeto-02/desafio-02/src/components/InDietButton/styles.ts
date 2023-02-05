@@ -16,8 +16,8 @@ export const Container = styled(TouchableOpacity) <Props>`
  padding: 20px 48px;
  border-radius:6px;
  ${({ theme, value, selected }) => css`
-    background-color: ${selected ? theme.COLORS.GREEN_LIGHT : theme.COLORS.GREEN_LIGHT};
-    border: 1px solid  ${selected ? theme.COLORS.GREEN_DARK : theme.COLORS.GREEN_DARK};
+    background-color: ${selected && value ? theme.COLORS.GREEN_LIGHT : theme.COLORS.RED_LIGHT};
+    border: 1px solid  ${selected && value ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK};
   `}
 `;
 

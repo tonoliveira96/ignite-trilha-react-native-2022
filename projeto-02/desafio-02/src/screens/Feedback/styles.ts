@@ -1,5 +1,9 @@
 import styled, { css } from 'styled-components/native';
 
+interface Props{
+  inDiet: boolean;
+}
+
 export const Container = styled.View`
  flex: 1;
  align-items: center;
@@ -7,10 +11,10 @@ export const Container = styled.View`
  padding: 30px;
 `;
 
-export const FeedbackTitle = styled.Text `
-  ${({ theme }) => css`
+export const FeedbackTitle = styled.Text<Props>`
+  ${({ theme, inDiet }) => css`
     font-size: ${theme.FONT_SIZE.TITLE_M}px;
-    color: ${theme.COLORS.GREEN_DARK};
+    color: ${ inDiet ? theme.COLORS.GREEN_DARK: theme.COLORS.RED_DARK};
     font-family: ${theme.FONT_FAMILY.BOLD};
   `};
 `

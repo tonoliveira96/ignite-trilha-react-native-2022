@@ -7,8 +7,8 @@ import { useNavigation } from '@react-navigation/native';
 import { mealCreate } from '@storage/mealsCreate';
 import { AppError } from '@utils/AppErros';
 import { maskDate, maskTime } from '@utils/mask';
-import React, { useState } from 'react';
-import { Alert } from 'react-native';
+import React, { useRef, useState } from 'react';
+import { Alert, TouchableOpacity } from 'react-native';
 import { Container, ContainerTwoColumns, Form } from './styles';
 
 export interface MealProps {
@@ -22,7 +22,7 @@ export interface MealProps {
 
 export function Create() {
   const navigation = useNavigation();
-
+  const buttonRef = useRef<TouchableOpacity>(null)
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [date, setDate] = useState('');
@@ -32,7 +32,7 @@ export function Create() {
   const [checked, setChecked] = useState<boolean>(false);
 
   function handleInDiet(value: 'sim' | 'nao') {
-    setInDiet(value === 'sim' ? true : false);
+    setInDiet(value === 'sim');
   }
 
   async function handleNew() {
@@ -63,8 +63,6 @@ export function Create() {
       }
     }
   }
-
-  console.log(inDiet);
 
   return (
     <Container>
@@ -111,13 +109,15 @@ export function Create() {
         <LabelInput style={{ marginTop: 12 }}>Está dentro da dieta?</LabelInput>
         <ContainerTwoColumns>
           <InDietButton
+            refButton={buttonRef}
             style={{ marginRight: 6 }}
             value={true}
             title='Sim'
-            onPress={() => handleInDiet('sim')}
-            checked={checked && inDiet}
+            onPress={() => { handleInDiet('sim'); }}
+            checked={!checked && inDiet}
           />
           <InDietButton
+            refButton={buttonRef}
             style={{ marginLeft: 6 }}
             value={false}
             title='Não'

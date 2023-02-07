@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import { Center, Heading, Image, ScrollView, Text, VStack } from 'native-base';
 import React from 'react';
 import backgroundImg from "../assets/background.png";
@@ -6,13 +7,20 @@ import { Button } from '../components/Button';
 import { Input } from '../components/Input';
 
 export function Singnup() {
+  const navigation = useNavigation();
+
+  function handleGoBack() {
+    navigation.goBack();
+  };
+
   return (
     <ScrollView
       contentContainerStyle={{ flexGrow: 1 }}
       showsVerticalScrollIndicator={false}>
-      <VStack flex={1} bg="gray.700" px={10} pb={16}>
+      <VStack flex={1} px={10} pb={16}>
         <Image
           source={backgroundImg}
+          defaultSource={backgroundImg}
           alt="Pessoas treinando"
           resizeMode='contain'
           position="absolute"
@@ -39,7 +47,12 @@ export function Singnup() {
           />
           <Button title='Criar e acessar' />
         </Center>
-        <Button variant="outline" title='Voltar para o login' mt={16} />
+        <Button
+          variant="outline"
+          title='Voltar para o login'
+          mt={16}
+          onPress={handleGoBack}
+        />
       </VStack>
     </ScrollView>
   );

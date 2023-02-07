@@ -1,18 +1,28 @@
+import { useNavigation } from '@react-navigation/native';
 import { Center, Heading, Image, ScrollView, Text, VStack } from 'native-base';
 import React from 'react';
 import backgroundImg from "../assets/background.png";
 import LogoSvg from '../assets/logo.svg';
 import { Button } from '../components/Button';
 import { Input } from '../components/Input';
+import { AuthNavigatorRoutesProps } from '../routes/auth.routes';
 
 export function Singnin() {
+
+  const navigation = useNavigation<AuthNavigatorRoutesProps>();
+
+  function handleNewAccount() {
+    navigation.navigate('signUp');
+  };
+
   return (
     <ScrollView
       contentContainerStyle={{ flexGrow: 1 }}
       showsVerticalScrollIndicator={false}>
-      <VStack flex={1} bg="gray.700" px={10} pb={16}>
+      <VStack flex={1} px={10} pb={16}>
         <Image
           source={backgroundImg}
+          defaultSource={backgroundImg}
           alt="Pessoas treinando"
           resizeMode='contain'
           position="absolute"
@@ -41,7 +51,11 @@ export function Singnin() {
           <Text color="gray.100" fontSize="sm" fontFamily="body">
             Ainda não tem acesso?
           </Text>
-          <Button variant="outline" title='Criar conta' />
+          <Button
+            variant="outline"
+            title='Criar conta'
+            onPress={handleNewAccount}
+          />
         </Center>
       </VStack>
     </ScrollView>
